@@ -1,26 +1,23 @@
-// Место для первой задачи
-//console.log(12%1 !=0);Math.ceil()
-//console.log(Math.ceil(12.0));
+function fib(x) {
 
-function calculateVolumeAndArea(a) {
-
-    if (typeof(a)!='number' || a< 0 || a%1 != 0) {
-        return "При вычислении произошла ошибка";
+    if (x <= 0 || typeof(x)!='number') {
+        return "";
     }
-    const volume = a * a * a;
-    const area = 6 * (a * a)
-    return `Объем куба: ${volume}, площадь всей поверхности: ${area}`;
+    let res = '0';
+    let prev1 = 0, prev2 = 1, sum = 0;
+    for (let i = 2; i <= x; i++) {
+        if (i == 2) {
+            sum = 1;
+            res += ' ' + sum;
+        }
+        else {
+            sum = prev1 + prev2;
+            res += ' ' + sum;
+            prev1 = prev2;
+            prev2 = sum;
+        }
+    }
+    return res;
 }
-//console.log(calculateVolumeAndArea(-1));
 
-// Место для второй задачи
-function getCoupeNumber(a) {
-    if (typeof(a)!='number' || a< 0 || a%1 != 0) {
-        return "Ошибка. Проверьте правильность введенного номера места";
-    }
-    else if (a === 0 || a > 36) {
-        return "Таких мест в вагоне не существует";
-    }
-    return Math.ceil(a / 4);
-}
-//console.log(getCoupeNumber(35));
+console.log(fib(7));
